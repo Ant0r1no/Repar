@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresa de Repartos</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 600px; margin: auto; }
+        button { padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a nuestra empresa de repartos</h1>
+        <p>Ofrecemos hasta 12 repartos diarios en tu ciudad.</p>
+        <form id="repartoForm">
+            <input type="text" id="nombre" placeholder="Tu nombre" required>
+            <input type="text" id="direccion" placeholder="Dirección de entrega" required>
+            <button type="submit">Solicitar Reparto</button>
+        </form>
+        <p id="mensaje"></p>
+    </div>
+
+    <script>
+        let repartosDiarios = 0;
+        document.getElementById('repartoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (repartosDiarios < 12) {
+                repartosDiarios++;
+                document.getElementById('mensaje').innerText = `Reparto confirmado. Quedan ${12 - repartosDiarios} disponibles hoy.`;
+            } else {
+                document.getElementById('mensaje').innerText = 'Lo sentimos, cupo de repartos diario alcanzado.';
+            }
+        });
+    </script>
+</body>
+</html>
